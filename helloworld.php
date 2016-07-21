@@ -6,6 +6,14 @@
 	
 </head>
 <body>
+	<?php 
+		// single-line comments are like this
+		# or like this (less common)
+		/* multi-line
+		   comments	
+		   like this
+		*/
+	?>
 	<?php echo "some text<br />";	?>
 	<?php echo "some text"."new text";	?><br />
 	<?php echo 5 + 78; ?>
