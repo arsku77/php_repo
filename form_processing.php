@@ -1,3 +1,12 @@
+<?php
+	if (isset($_POST['submit'])) {
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$message = "Logging in: {$username}";
+	} else {
+		$message = "Please log in.";
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
