@@ -4,8 +4,11 @@
 	$name = "test";
 	$value = "Python";
 	$expire = time() + (7*24*60*60);
-	setcookie($name, $value, $expire);	
-
+	# setcookie($name, $value, $expire);	
+	# setcookie($name);
+	# setcookie($name, null);
+	# setcookie($name, $value, time() - 2);
+	setcookie($name, null, time() - 2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
