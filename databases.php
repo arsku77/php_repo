@@ -13,15 +13,38 @@
 			" (".mysqli_connect_errno().")");
 	}
 ?>
+<?php
+	# 2. Perform database query
+	$query  = "SELECT * ";
+	$query .= "FROM subjects ";
+	$query .= "WHERE visible = 1 ";
+	$query .= "ORDER BY position ASC";
+	$result = mysqli_query($connection, $query);
+	# Test if there was a query error
+	if (!$result) {
+		die("Database query failed.");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>untitled</title>
+		<title>Databases</title>
 	</head>
 	<body>
+		<pre>
 		<?php
-				
+			# 3. Use returned data (any)
+			while ($row = mysqli_fetch_row($result)) {
+				# output data from each row
+				var_dump($row);
+				echo "<br />";
+			}
 		?>
+		<?php
+			# 4. Release returned data
+			mysqli_free_result($result);
+		?>
+		</pre>
 	</body>
 </html>
 
