@@ -14,16 +14,30 @@
 	}
 ?>
 <?php
+	# Often these are form values in $_POST
+	$menu_name = "Delete me";
+	$position = 4;
+	$visible = 1;
+	$id = 4;
+
 	# 2. Perform database query
-	$query  = "SELECT * ";
-	$query .= "FROM subjects ";
-	$query .= "WHERE visible = 1 ";
-	$query .= "ORDER BY position ASC";
+	$query  = "UPDATE subjects SET ";
+	$query .= "menu_name = '{$menu_name}', ";
+	$query .= "position = {$position}, ";
+	$query .= "visible = {$visible} ";
+	$query .= "WHERE id = {$id}";
 	$result = mysqli_query($connection, $query);
 	# Test if there was a query error
-	if (!$result) {
-		die("Database query failed.");
+	if ($result && mysqli_affected_rows($connection) == 1) {
+		# Success
+		# redirect_to("some_page.php");
+		echo "Success!";
+	} else {
+		# Failure
+		# $message = "Subject update failed";
+		die("Database query failed. ".mysqli_error($connection));
 	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,19 +45,6 @@
 		<title>Databases</title>
 	</head>
 	<body>
-		<ul>
-		<?php
-			# 3. Use returned data (any)
-			while ($subject = mysqli_fetch_assoc($result)) {
-				# output data from each row
-		?>
-		<li><?php echo $subject["menu_name"]." (".$subject["id"].")"; ?></li>	
-		<?php }	?>
-		</ul>
-		<?php
-			# 4. Release returned data
-			mysqli_free_result($result);
-		?>
 		
 	</body>
 </html>
