@@ -1,7 +1,11 @@
 <?php 
+	
+	ini_set("display_errors", "On");
+	error_reporting(E_ALL);
+
 	# Test if there was a query error
 	function confirm_query($result_set) {
-		if (!result_set) {
+		if (!$result_set) {
 			die("Database query failed.");
 		}
 	}
