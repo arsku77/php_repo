@@ -22,6 +22,23 @@
 		}
 	}
 
+	function form_errors($errors_array = array()) {
+		$output = "";
+		if (!empty($errors_array)) {
+			$output .= "<div class=\"errors\">";
+			$output .= "Please fix the following errors:";
+			$output .= "<ul>";
+			foreach ($errors_array as $key => $error) {
+				$output .= "<li>".$error."</li>";
+			}
+
+			$output .= "</ul>";
+			$output .= "</div>";
+		}
+
+		return $output;
+	}
+
 	function find_all_subjects() {
 		global $connection;
 
