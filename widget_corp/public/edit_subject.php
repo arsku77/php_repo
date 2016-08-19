@@ -104,6 +104,9 @@
 		</form>
 		<br />
 		<a href="manage_content.php">Cancel</a>
+		&nbsp;
+		&nbsp;
+		<a href="delete_subject.php?subject=<?php echo $current_subject["id"]; ?>"onclick="return confirm('A you shure?');">Delete subject</a>
 	</div>
 </div>
 
